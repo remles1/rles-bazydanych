@@ -1,0 +1,1 @@
+ CREATE TABLE postac(postac_id int NOT NULL AUTO_INCREMENT, nazwa varchar(40), rodzaj enum('wiking','ptak','kobieta'), data_ur date, wiek int unsigned, PRIMARY KEY(postac_id));
