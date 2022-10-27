@@ -1,6 +1,19 @@
- CREATE TABLE postac(postac_id int NOT NULL AUTO_INCREMENT, nazwa varchar(40), rodzaj enum('wiking','ptak','kobieta'), data_ur date, wiek int unsigned, PRIMARY KEY(postac_id));
+zad 1 i 2
+
+
+CREATE TABLE postac(postac_id int NOT NULL AUTO_INCREMENT, nazwa varchar(40), rodzaj enum('wiking','ptak','kobieta'), data_ur date, wiek int unsigned, PRIMARY KEY(postac_id));
  INSERT INTO postac (nazwa, rodzaj, data_ur, wiek) VALUES("Bjorn", "wiking", "1066-01-02", "42");
 INSERT INTO postac VALUES(0,"Drozd","ptak","1065-06-05",43 );
 INSERT INTO postac VALUES(0,"Tesciowa","kobieta","1000-04-07",108);
  UPDATE postac SET wiek=88 where postac_id=3;
 CREATE table walizka(walizka_id int NOT NULL AUTO_INCREMENT, pojemnosc int unsigned, kolor enum('rozowy','czerwony','teczowy','zolty'), wlasciciel_id int, PRIMARY KEY(walizka_id), FOREIGN KEY(wlasciciel_id) REFERENCES postac (postac_id) ON DELETE CASCADE);
+ ALTER TABLE walizka ALTER kolor SET DEFAULT "rozowy";
+INSERT INTO walizka VALUES(0,100,"czerwony",1);
+INSERT INTO walizka VALUES(0,100,default,3);
+
+
+zad 3
+
+CREATE TABLE izba(adres_budynku int NOT NULL, nazwa_izby varchar(50) NOT NULL, metraz int unsigned, wlasciciel int, PRIMARY KEY(adres_budynku,nazwa_izby), FOREIGN KEY(wlasciciel) REFERENCES postac(postac_id) ON DELETE SET NULL);
+ ALTER TABLE izba ADD kolor varchar(10) AFTER metraz;
+ ALTER TABLE izba MODIFY COLUMN kolor varchar(10) DEFAULT 'czarny';
