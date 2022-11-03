@@ -40,6 +40,7 @@ UPDATE postac SET funkcja='kapitan' WHERE postac_id=1;
 ALTER TABLE postac ADD COLUMN statek varchar(10) AFTER rodzaj;
 ALTER TABLE postac ADD FOREIGN KEY(statek) REFERENCES statek(nazwa_statku);
 UPDATE postac SET statek='Odyn' WHERE postac_id=1;
+UPDATE postac SET statek='Odyn' WHERE postac_id=2;
 UPDATE postac SET statek='Odyn' WHERE postac_id=5;
 UPDATE postac SET statek='Odyn' WHERE postac_id=6;
 UPDATE postac SET statek='Odyn' WHERE postac_id=7;
