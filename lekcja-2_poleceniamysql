@@ -1,1 +1,2 @@
+DELETE FROM postac WHERE postac_id=5 || postac_id=6;
 
