@@ -17,3 +17,11 @@ zad 3
 CREATE TABLE izba(adres_budynku int NOT NULL, nazwa_izby varchar(50) NOT NULL, metraz int unsigned, wlasciciel int, PRIMARY KEY(adres_budynku,nazwa_izby), FOREIGN KEY(wlasciciel) REFERENCES postac(postac_id) ON DELETE SET NULL);
  ALTER TABLE izba ADD kolor varchar(10) AFTER metraz;
  ALTER TABLE izba MODIFY COLUMN kolor varchar(10) DEFAULT 'czarny';
+ INSERT INTO izba VALUES(123,"spizarnia",100,default,1);
+
+
+Zad 4
+CREATE TABLE przetwory(id_przetworu int NOT NULL AUTO_INCREMENT, rok_produkcji YEAR DEFAULT 1954, id_wykonawcy int, zawartosc varchar(50), dodatek
+varchar(50) DEFAULT "papryczka chilli",id_konsumenta int, PRIMARY KEY(id_przetworu), FOREIGN KEY(id_wykonawcy) REFERENCES postac(postac_id) ON DELETE SET
+NULL, FOREIGN KEY(id_konsumenta) REFERENCES postac(postac_id) ON DELETE SET NULL);
+INSERT INTO przetwory VALUES(default,default,1,"bigos",default,3);
