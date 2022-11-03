@@ -25,3 +25,29 @@ CREATE TABLE przetwory(id_przetworu int NOT NULL AUTO_INCREMENT, rok_produkcji Y
 varchar(50) DEFAULT "papryczka chilli",id_konsumenta int, PRIMARY KEY(id_przetworu), FOREIGN KEY(id_wykonawcy) REFERENCES postac(postac_id) ON DELETE SET
 NULL, FOREIGN KEY(id_konsumenta) REFERENCES postac(postac_id) ON DELETE SET NULL);
 INSERT INTO przetwory VALUES(default,default,1,"bigos",default,3);
+
+Zad 5
+INSERT INTO postac(nazwa,rodzaj,data_ur,wiek) VALUES('wikingJeden', 'wiking', '1961-03-04', 30);
+INSERT INTO postac(nazwa,rodzaj,data_ur,wiek) VALUES('wikingDwa', 'wiking', '1961-03-05', 30);
+INSERT INTO postac(nazwa,rodzaj,data_ur,wiek) VALUES('wikingTrzy', 'wiking', '1961-03-06', 30);
+INSERT INTO postac(nazwa,rodzaj,data_ur,wiek) VALUES('wikingCztery', 'wiking', '1961-03-07', 30);
+INSERT INTO postac(nazwa,rodzaj,data_ur,wiek) VALUES('wikingPiec', 'wiking', '1961-03-08', 30);
+CREATE TABLE statek(nazwa_statku varchar(10) NOT NULL, rodzaj_statku enum('barka', 'knara'), data_wodowania date, max_ladownosc int unsigned, PRIMARY KEY(nazwa_statku));
+INSERT INTO statek VALUES('Odyn','Knara','1961-03-05','1900');
+INSERT INTO statek VALUES('Zolty','barka','1961-03-15','1400');
+ALTER TABLE postac ADD COLUMN funkcja varchar(15) DEFAULT NULL AFTER rodzaj;
+UPDATE postac SET funkcja='kapitan' WHERE postac_id=1;
+ALTER TABLE postac ADD COLUMN statek varchar(10) AFTER rodzaj;
+ALTER TABLE postac ADD FOREIGN KEY(statek) REFERENCES statek(nazwa_statku);
+UPDATE postac SET statek='Odyn' WHERE postac_id=1;
+UPDATE postac SET statek='Odyn' WHERE postac_id=5;
+UPDATE postac SET statek='Odyn' WHERE postac_id=6;
+UPDATE postac SET statek='Odyn' WHERE postac_id=7;
+UPDATE postac SET statek='Zolty' WHERE postac_id=8;
+UPDATE postac SET statek='Zolty' WHERE postac_id=9;
+DELETE FROM izba WHERE nazwa_izby='spizarnia';
+DROP TABLE izba;
+
+
+
+
