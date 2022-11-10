@@ -23,3 +23,6 @@ INSERT INTO postac VALUES('37485610689', 10, 'Gertruda Nieszczera', 'syrena', de
 Zad 3 
 UPDATE postac SET statek='Odyn' WHERE nazwa LIKE '%a%';
 UPDATE statek SET max_ladownosc = max_ladownosc * 0.7 WHERE YEAR(data_wodowania)<2001;
+ALTER TABLE postac ADD CHECK(wiek<=1000);
+
+Zad 4
