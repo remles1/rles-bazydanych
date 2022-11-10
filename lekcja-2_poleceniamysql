@@ -7,3 +7,15 @@ ALTER TABLE przetwory DROP FOREIGN KEY przetwory_ibfk_2;
 ALTER TABLE postac MODIFY COLUMN postac_id int NOT NULL;
 ALTER TABLE postac DROP PRIMARY KEY;
 
+Zad 2
+
+ALTER TABLE postac ADD COLUMN pesel char(11) NOT NULL FIRST;
+ALTER TABLE postac ALTER COLUMN pesel SET DEFAULT '12345678901';
+UPDATE postac SET pesel='04657382905' WHERE postac_id=1;
+UPDATE postac SET pesel='04657382305' WHERE postac_id=2;
+UPDATE postac SET pesel='34657382305' WHERE postac_id=7;
+UPDATE postac SET pesel='34657382385' WHERE postac_id=8;
+UPDATE postac SET pesel='34657333389' WHERE postac_id=3;
+ALTER TABLE postac add constraint primary key(pesel);
+ALTER TABLE postac MODIFY rodzaj enum('wiking','ptak','kobieta','syrena');
+INSERT INTO postac VALUES('37485610689', 10, 'Gertruda Nieszczera', 'syrena', default, default,default,256);
