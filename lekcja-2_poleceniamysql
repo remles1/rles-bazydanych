@@ -1,2 +1,9 @@
+Zad 1
+
 DELETE FROM postac WHERE postac_id=5 || postac_id=6;
+ALTER TABLE walizka DROP FOREIGN KEY walizka_ibfk_1;
+ALTER TABLE przetwory DROP FOREIGN KEY przetwory_ibfk_1;
+ALTER TABLE przetwory DROP FOREIGN KEY przetwory_ibfk_2;
+ALTER TABLE postac MODIFY COLUMN postac_id int NOT NULL;
+ALTER TABLE postac DROP PRIMARY KEY;
 
