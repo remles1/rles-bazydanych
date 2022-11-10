@@ -19,3 +19,7 @@ UPDATE postac SET pesel='34657333389' WHERE postac_id=3;
 ALTER TABLE postac add constraint primary key(pesel);
 ALTER TABLE postac MODIFY rodzaj enum('wiking','ptak','kobieta','syrena');
 INSERT INTO postac VALUES('37485610689', 10, 'Gertruda Nieszczera', 'syrena', default, default,default,256);
+
+Zad 3 
+UPDATE postac SET statek='Odyn' WHERE nazwa LIKE '%a%';
+UPDATE statek SET max_ladownosc = max_ladownosc * 0.7 WHERE YEAR(data_wodowania)<2001;
