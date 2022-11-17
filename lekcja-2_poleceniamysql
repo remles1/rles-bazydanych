@@ -26,3 +26,6 @@ UPDATE statek SET max_ladownosc = max_ladownosc * 0.7 WHERE YEAR(data_wodowania)
 ALTER TABLE postac ADD CHECK(wiek<=1000);
 
 Zad 4
+INSERT INTO postac VALUES(66666666666, 11, 'Loko','waz',default,default,default,1000);
+CREATE TABLE marynarz(pesel char(11) NOT NULL, postac_id int NOT NULL, nazwa varchar(40), rodzaj enum('wiking','ptak','kobieta','syrena'), statek varchar(10), funkcja varchar(15), data_ur date, wiek int unsigned );
+ALTER TABLE marynarz ADD CONSTRAINT PRIMARY KEY(pesel);
