@@ -1,6 +1,5 @@
 Zad 1
-
-DELETE FROM postac WHERE postac_id=5 || postac_id=6;
+DELETE FROM postac WHERE rodzaj = 'wiking' AND nazwa !='Bjorn' ORDER BY dataUr ASC LIMIT 2;
 ALTER TABLE walizka DROP FOREIGN KEY walizka_ibfk_1;
 ALTER TABLE przetwory DROP FOREIGN KEY przetwory_ibfk_1;
 ALTER TABLE przetwory DROP FOREIGN KEY przetwory_ibfk_2;
@@ -8,7 +7,6 @@ ALTER TABLE postac MODIFY COLUMN postac_id int NOT NULL;
 ALTER TABLE postac DROP PRIMARY KEY;
 
 Zad 2
-
 ALTER TABLE postac ADD COLUMN pesel char(11) NOT NULL FIRST;
 ALTER TABLE postac ALTER COLUMN pesel SET DEFAULT '12345678901';
 UPDATE postac SET pesel='04657382905' WHERE postac_id=1;
@@ -29,3 +27,9 @@ Zad 4
 INSERT INTO postac VALUES(66666666666, 11, 'Loko','waz',default,default,default,1000);
 CREATE TABLE marynarz(pesel char(11) NOT NULL, postac_id int NOT NULL, nazwa varchar(40), rodzaj enum('wiking','ptak','kobieta','syrena'), statek varchar(10), funkcja varchar(15), data_ur date, wiek int unsigned );
 ALTER TABLE marynarz ADD CONSTRAINT PRIMARY KEY(pesel);
+INSERT INTO marynarz SELECT * FROM postac;
+ALTER TABLE marynarz ADD FOREIGN KEY(statek) REFERENCES statek(nazwa_statku);
+ALTER TABLE marynarz ADD CHECK(wiek <=1000);
+ALTER TABLE marynarz ALTER COLUMN pesel SET DEFAULT '12345678901';
+
+Zad 5
