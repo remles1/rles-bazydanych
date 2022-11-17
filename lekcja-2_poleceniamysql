@@ -28,8 +28,19 @@ INSERT INTO postac VALUES(66666666666, 11, 'Loko','waz',default,default,default,
 CREATE TABLE marynarz(pesel char(11) NOT NULL, postac_id int NOT NULL, nazwa varchar(40), rodzaj enum('wiking','ptak','kobieta','syrena'), statek varchar(10), funkcja varchar(15), data_ur date, wiek int unsigned );
 ALTER TABLE marynarz ADD CONSTRAINT PRIMARY KEY(pesel);
 INSERT INTO marynarz SELECT * FROM postac;
+DELETE FROM marynarz WHERE statek IS NULL;
 ALTER TABLE marynarz ADD FOREIGN KEY(statek) REFERENCES statek(nazwa_statku);
 ALTER TABLE marynarz ADD CHECK(wiek <=1000);
 ALTER TABLE marynarz ALTER COLUMN pesel SET DEFAULT '12345678901';
 
 Zad 5
+UPDATE marynarz SET statek = null;
+UPDATE postac SET statek = null;
+DELETE FROM marynarz WHERE postac_id = 7;
+DELETE FROM postac WHERE postac_id = 7;
+delete from statek;
+ALTER TABLE postac DROP CONSTRAINT postac_ibfk_1;
+ALTER TABLE marynarz DROP CONSTRAINT marynarz_ibfk_1;
+DROP TABLE statek;
+CREATE TABLE zwierz(zwierz_id int NOT NULL AUTO_INCREMENT, nazwa varchar(40), wiek int unsigned, PRIMARY KEY(zwierz_id));
+INSERT INTO zwierz VALUES(2, 'Drozd', 43);
