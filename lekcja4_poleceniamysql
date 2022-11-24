@@ -1,0 +1,6 @@
+Zad 1
+SELECT AVG(waga) FROM kreatura where rodzaj = 'wiking';
+SELECT AVG(waga) AS 'srednia waga', rodzaj, COUNT(rodzaj) FROM kreatura GROUP BY rodzaj;
+select rodzaj, AVG(2022 - YEAR(dataUr)) AS 'sredni wiek w roku 2022' from kreatura GROUP BY rodzaj;
+
+Zad 2
