@@ -9,3 +9,5 @@ SELECT nazwa, AVG(waga) FROM zasob WHERE ilosc >= 4 GROUP BY nazwa HAVING SUM(wa
 SELECT rodzaj, COUNT(DISTINCT nazwa) FROM zasob WHERE ilosc >1 GROUP BY rodzaj;
 
 Zad 3
+SELECT rodzaj, COUNT(DISTINCT nazwa) FROM zasob WHERE ilosc >1 GROUP BY rodzaj;
+SELECT idKreatury,SUM(ilosc) FROM ekwipunek GROUP BY idKreatury; // do poprawy
