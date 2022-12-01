@@ -9,5 +9,21 @@ SELECT nazwa, AVG(waga) FROM zasob WHERE ilosc >= 4 GROUP BY nazwa HAVING SUM(wa
 SELECT rodzaj, COUNT(DISTINCT nazwa) FROM zasob WHERE ilosc >1 GROUP BY rodzaj;
 
 Zad 3
-SELECT rodzaj, COUNT(DISTINCT nazwa) FROM zasob WHERE ilosc >1 GROUP BY rodzaj;
-SELECT idKreatury,SUM(ilosc) FROM ekwipunek GROUP BY idKreatury; // do poprawy
+SELECT kreatura.nazwa, SUM(ekwipunek.ilosc) FROM kreatura JOIN ekwipunek on kreatura.idKreatury = ekwipunek.idKreatury GROUP BY kreatura.nazwa;
+SELECT kreatura.nazwa, zasob.nazwa FROM kreatura JOIN ekwipunek ON kreatura.idKreatury = ekwipunek.idKreatury JOIN zasob ON ekwipunek.idZasobu = zasob.idZasobu ORDER BY kreatura.nazwa ASC;
+SELECT kreatura.nazwa FROM kreatura LEFT JOIN ekwipunek ON kreatura.idKreatury = ekwipunek.idKreatury WHERE ekwipunek.idKreatury IS NULL;
+
+Zad 4
+SELECT kreatura.nazwa, zasob.nazwa FROM kreatura NATURAL JOIN ekwipunek JOIN zasob ON ekwipunek.idZasobu = zasob.idZasobu WHERE YEAR(kreatura.dataUr) BETWEEN 1670 AND 1679 ORDER BY kreatura.nazwa ASC;
+SELECT kreatura.nazwa,zasob.nazwa FROM kreatura NATURAL JOIN ekwipunek JOIN zasob ON ekwipunek.idZasobu = zasob.idZasobu WHERE zasob.rodzaj = 'jedzenie' ORDER BY kreatura.dataUr DESC LIMIT 5;
+SELECT a.nazwa, b.nazwa FROM kreatura AS a, kreatura AS b WHERE a.idKreatury - b.idKreatury = 5;
+
+Zad 5
+SELECT kreatura.rodzaj, AVG(zasob.ilosc * zasob.waga) FROM kreatura JOIN ekwipunek ON kreatura.idKreatury = ekwipunek.idKreatury JOIN zasob ON ekwipunek.idZasobu = zasob.idZasobu WHERE kreatura.rodzaj NOT IN ('malpa','waz') AND zasob.ilosc < 30 GROUP BY kreatura.rodzaj;
+SELECT kreatura.rodzaj, AVG(zasob.waga * zasob.ilosc) FROM kreatura JOIN ekwipunek ON kreatura.idKreatury = ekwipunek.idKreatury JOIN zasob ON
+ ekwipunek.idZasobu = zasob.idZasobu WHERE kreatura.rodzaj NOT IN ('malpa','waz') AND ekwipunek.ilosc < 30 GROUP BY kreatura.rodzaj;
+
+
+
+
+
