@@ -19,7 +19,6 @@ SELECT kreatura.nazwa,zasob.nazwa FROM kreatura NATURAL JOIN ekwipunek JOIN zaso
 SELECT a.nazwa, b.nazwa FROM kreatura AS a, kreatura AS b WHERE a.idKreatury - b.idKreatury = 5;
 
 Zad 5
-SELECT kreatura.rodzaj, AVG(zasob.ilosc * zasob.waga) FROM kreatura JOIN ekwipunek ON kreatura.idKreatury = ekwipunek.idKreatury JOIN zasob ON ekwipunek.idZasobu = zasob.idZasobu WHERE kreatura.rodzaj NOT IN ('malpa','waz') AND zasob.ilosc < 30 GROUP BY kreatura.rodzaj;
 SELECT kreatura.rodzaj, AVG(zasob.waga * zasob.ilosc) FROM kreatura JOIN ekwipunek ON kreatura.idKreatury = ekwipunek.idKreatury JOIN zasob ON
  ekwipunek.idZasobu = zasob.idZasobu WHERE kreatura.rodzaj NOT IN ('malpa','waz') AND ekwipunek.ilosc < 30 GROUP BY kreatura.rodzaj;
 
