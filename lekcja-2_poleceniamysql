@@ -43,4 +43,5 @@ ALTER TABLE postac DROP CONSTRAINT postac_ibfk_1;
 ALTER TABLE marynarz DROP CONSTRAINT marynarz_ibfk_1;
 DROP TABLE statek;
 CREATE TABLE zwierz(zwierz_id int NOT NULL AUTO_INCREMENT, nazwa varchar(40), wiek int unsigned, PRIMARY KEY(zwierz_id));
-INSERT INTO zwierz VALUES(2, 'Drozd', 43);
+INSERT INTO zwierz (zwierz_id,nazwa,wiek) SELECT postac_id, nazwa,wiek FROM postac WHERE rodzaj IN ('waz', 'ptak');
+
