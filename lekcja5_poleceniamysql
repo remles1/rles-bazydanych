@@ -6,5 +6,4 @@ CREATE TABLE etapy_wyprawy AS SELECT * FROM wikingowie.etapy_wyprawy;
 CREATE TABLE sektor AS SELECT * FROM wikingowie.sektor;
 CREATE TABLE wyprawa AS SELECT * FROM wikingowie.wyprawa;
 SELECT nazwa FROM kreatura LEFT JOIN uczestnicy ON kreatura.idKreatury = uczestnicy.id_uczestnika WHERE uczestnicy.id_uczestnika IS NULL;
-
-// poprawa SELECT nazwa, SUM(s) FROM (SELECT wyprawa.nazwa, SUM(ekwipunek.ilosc) as s FROM wyprawa INNER JOIN uczestnicy ON wyprawa.id_wyprawy = uczestnicy.id_wyprawy INNER JOIN ekwipunek ON uczestnicy.id_uczestnika = ekwipunek.idKreatury GROUP BY ekwipunek.idKreatury) GROUP BY nazwa;
+SELECT wyprawa.nazwa, sum(ekwipunek.ilosc) FROM wyprawa JOIN uczestnicy ON wyprawa.id_wyprawy = uczestnicy.id_wyprawy JOIN ekwipunek ON ekwipunek.idKreatury = uczestnicy.id_uczestnika GROUP BY wyprawa.id_wyprawy;
