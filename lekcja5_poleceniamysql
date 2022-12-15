@@ -7,3 +7,10 @@ CREATE TABLE sektor AS SELECT * FROM wikingowie.sektor;
 CREATE TABLE wyprawa AS SELECT * FROM wikingowie.wyprawa;
 SELECT nazwa FROM kreatura LEFT JOIN uczestnicy ON kreatura.idKreatury = uczestnicy.id_uczestnika WHERE uczestnicy.id_uczestnika IS NULL;
 SELECT wyprawa.nazwa, sum(ekwipunek.ilosc) FROM wyprawa JOIN uczestnicy ON wyprawa.id_wyprawy = uczestnicy.id_wyprawy JOIN ekwipunek ON ekwipunek.idKreatury = uczestnicy.id_uczestnika GROUP BY wyprawa.id_wyprawy;
+
+Zad 2 
+SELECT wyprawa.nazwa, GROUP_CONCAT(kreatura.nazwa), COUNT(id_uczestnika) FROM wyprawa JOIN uczestnicy ON wyprawa.id_wyprawy
+= uczestnicy.id_wyprawy JOIN kreatura ON uczestnicy.id_uczestnika = kreatura.idKreatury GROUP BY wyprawa.nazwa;
+SELECT kreatura.nazwa, wyprawa.nazwa, etapy_wyprawy.sektor, sektor.nazwa FROM wyprawa JOIN etapy_wyprawy ON wyprawa.id_wyprawy = etapy_wyprawy.idWyprawy JOIN kreatura ON wyprawa.kierownik = kreatura.idKreatury JOIN sektor on etapy_wyprawy.sektor = sektor.id_sektora ORDER BY wyprawa.data_rozpoczecia ASC, etapy_wyprawy.kolejnosc ASC;
+
+
