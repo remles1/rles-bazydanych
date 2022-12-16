@@ -21,7 +21,7 @@ SELECT a.nazwa, b.nazwa FROM kreatura AS a, kreatura AS b WHERE a.idKreatury - b
 Zad 5
 SELECT kreatura.rodzaj, AVG(zasob.waga * zasob.ilosc) FROM kreatura JOIN ekwipunek ON kreatura.idKreatury = ekwipunek.idKreatury JOIN zasob ON
  ekwipunek.idZasobu = zasob.idZasobu WHERE kreatura.rodzaj NOT IN ('malpa','waz') AND ekwipunek.ilosc < 30 GROUP BY kreatura.rodzaj;
-punkt 2 group concat
+SELECT nazwa,rodzaj, dataUR FROM kreatura WHERE dataUr IN (SELECT MIN(dataUr) from kreatura GROUP BY rodzaj) UNION SELECT nazwa,rodzaj, dataUR FROM kreatura WHERE dataUr IN (SELECT MAX(dataUr) from kreatura GROUP BY rodzaj);
 
 
 
