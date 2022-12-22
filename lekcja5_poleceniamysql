@@ -16,3 +16,6 @@ SELECT kreatura.nazwa, wyprawa.nazwa, etapy_wyprawy.sektor, sektor.nazwa FROM wy
 Zad 3
 SELECT x.sektor, sektor.nazwa, COUNT(etapy_wyprawy.sektor) FROM (SELECT id_sektora AS sektor FROM sektor UNION SELECT etapy_wyprawy.sektor FROM etapy_wyprawy) AS x LEFT JOIN etapy_wyprawy ON x.sektor = etapy_wyprawy.sektor JOIN sektor ON x.sektor = sektor.id_sektora GROUP BY x.sektor;
 SELECT kreatura.nazwa,IF(COUNT(uczestnicy.id_uczestnika)>0 ,'bral udzial w wyprawie' , 'nie bral udzialu w wyprawie') AS 'czy bral udzial' FROM kreatura LEFT JOIN uczestnicy ON kreatura.idKreatury = uczestnicy.id_uczestnika GROUP BY kreatura.idKreatury;
+
+Zad 4
+SELECT wyprawa.nazwa, LENGTH(GROUP_CONCAT(dziennik)) FROM etapy_wyprawy JOIN wyprawa ON etapy_wyprawy.idWyprawy = wyprawa.id_wyprawy GROUP BY idWyprawy HAVING(LENGTH(GROUP_CONCAT(dziennik)) < 400);
