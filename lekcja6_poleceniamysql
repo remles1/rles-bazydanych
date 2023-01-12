@@ -26,3 +26,12 @@ END;//
 DELIMITER ;
  
 Zad 2
+DELIMITER //
+CREATE TRIGGER archiwum_trigger AFTER DELETE ON wyprawa
+FOR EACH ROW
+BEGIN
+INSERT INTO archiwum_wypraw VALUES(OLD.id_wyprawy, OLD.nazwa, OLD.data_rozpoczecia, OLD.data_zakonczenia, OLD.kierownik);
+END;//
+DELIMITER ;
+
+Zad 3
