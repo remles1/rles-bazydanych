@@ -20,3 +20,6 @@ SELECT kreatura.nazwa,IF(COUNT(uczestnicy.id_uczestnika)>0 ,'bral udzial w wypra
 Zad 4
 SELECT wyprawa.nazwa, LENGTH(GROUP_CONCAT(dziennik SEPARATOR '')) FROM etapy_wyprawy JOIN wyprawa ON etapy_wyprawy.idWyprawy = wyprawa.id_wyprawy GROUP BY idWyprawy HAVING(LENGTH(GROUP_CONCAT(dziennik)) < 400);
 SELECT wyprawa.nazwa, SUM(ekwipunek.ilosc * zasob.waga) / (SELECT COUNT(id_uczestnika) FROM uczestnicy WHERE uczestnicy.id_wyprawy = wyprawa.id_wyprawy GROUP BY uczestnicy.id_wyprawy) FROM wyprawa INNER JOIN uczestnicy ON wyprawa.id_wyprawy = uczestnicy.id_wyprawy INNER JOIN ekwipunek ON uczestnicy.id_uczestnika = ekwipunek.idKreatury INNER JOIN zasob ON ekwipunek.idZasobu = zasob.idZasobu GROUP BY wyprawa.id_wyprawy;
+
+Zad 5
+SELECT wyprawa.nazwa, kreatura.nazwa, datediff(wyprawa.data_rozpoczecia, kreatura.dataUr) FROM wyprawa INNER JOIN etapy_wyprawy ON wyprawa.id_wyprawy = etapy_wyprawy.idWyprawy INNER JOIN uczestnicy ON uczestnicy.id_wyprawy = wyprawa.id_wyprawy INNER JOIN kreatura ON kreatura.idKreatury = uczestnicy.id_uczestnika WHERE sektor = 7 ORDER BY wyprawa.nazwa;
