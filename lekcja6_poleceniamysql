@@ -11,5 +11,18 @@ SET NEW.waga = 0;
 END IF;
 END;// 
 DELIMITER ;
- ^ tylko dla insert, bo BEFORE INSERT,UPDATE nie działa
+
+DELIMITER //
+CREATE TRIGGER waga_wieksza_od_zero_update
+BEFORE UPDATE ON kreatura
+
+FOR EACH ROW
+
+BEGIN
+IF NEW.waga < 0 THEN
+SET NEW.waga = 0;
+END IF;
+END;// 
+DELIMITER ;
  
+Zad 2
